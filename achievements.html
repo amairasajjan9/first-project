@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Achievements &amp; Activities — Amaira Sajjan</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+
+  :root {
+    --bg: #0d1117;
+    --bg-panel: #12161f;
+    --bg-card: #161b26;
+    --border: #232a38;
+    --text: #e6e9ef;
+    --text-dim: #8891a3;
+    --accent: #7ee787;
+    --accent-2: #ffab70;
+    --keyword: #ff7b72;
+    --string: #a5d6ff;
+    --func: #d2a8ff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  .mono { font-family: 'JetBrains Mono', monospace; }
+
+  /* ---------- Nav ---------- */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 60px;
+    background: rgba(13,17,23,0.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .logo {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    font-size: 18px;
+    letter-spacing: -0.5px;
+  }
+  .logo span { color: var(--accent); }
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 36px;
+  }
+
+  nav a {
+    font-size: 15px;
+    color: var(--text-dim);
+    transition: color 0.2s;
+  }
+  nav a:hover { color: var(--accent); }
+  nav a.active { color: var(--accent); }
+
+  .nav-icons {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+  }
+  .nav-icons a {
+    color: var(--text-dim);
+    font-size: 18px;
+  }
+  .nav-icons a:hover { color: var(--accent); }
+
+  /* ---------- Page head ---------- */
+  .page-head {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 70px 40px 20px;
+  }
+  .page-head .eyebrow {
+    color: var(--accent);
+    font-size: 15px;
+    margin-bottom: 14px;
+    display: block;
+  }
+  .page-head h1 {
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+  .page-head p {
+    color: var(--text-dim);
+    font-size: 16px;
+    max-width: 620px;
+  }
+
+  /* ---------- Section shells ---------- */
+  section { max-width: 1100px; margin: 0 auto; padding: 50px 40px; }
+  .section-head { margin-bottom: 30px; }
+  .section-head .tag {
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--accent);
+    font-size: 14px;
+    display: block;
+    margin-bottom: 8px;
+  }
+  .section-head h2 { font-size: 26px; font-weight: 700; }
+
+  /* ---------- Achievement cards ---------- */
+  .achv-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  .achv-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 22px 24px;
+    transition: transform 0.2s, border-color 0.2s;
+  }
+  .achv-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--accent);
+  }
+  .achv-card ul { list-style: none; }
+  .achv-card li {
+    font-size: 14.5px;
+    color: var(--text-dim);
+    padding: 8px 0;
+    padding-left: 20px;
+    position: relative;
+  }
+  .achv-card li::before {
+    content: "▹";
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  footer {
+    text-align: center;
+    padding: 30px;
+    color: var(--text-dim);
+    font-size: 13px;
+    font-family: 'JetBrains Mono', monospace;
+    border-top: 1px solid var(--border);
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 900px) {
+    header { padding: 16px 24px; }
+    nav ul { display: none; }
+    .page-head { padding: 50px 24px 10px; }
+    section { padding: 40px 24px; }
+    .achv-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 560px) {
+    .page-head h1 { font-size: 30px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">amaira sajjan</div>
+  <nav>
+    <ul>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="skills.html">Skills</a></li>
+      <li><a href="achievements.html" class="active">Achievements</a></li>
+      <li><a href="index.html#projects">Blogs</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+  </nav>
+  <div class="nav-icons">
+    <a href="https://github.com/AmairaS" target="_blank" title="GitHub">GH</a>
+    <a href="https://www.linkedin.com/in/amaira-sajjan-1a151b314/" target="_blank" title="LinkedIn">in</a>
+  </div>
+</header>
+
+<div class="page-head">
+  <span class="eyebrow mono">// beyond the classroom</span>
+  <h1>Achievements &amp; Activities</h1>
+  <p>A record of the competitions, leadership roles, and extracurriculars I've been part of — spanning debate, sports, music, and student government.</p>
+</div>
+
+<section>
+  <div class="section-head">
+    <span class="tag mono">01.</span>
+    <h2>Student Leadership</h2>
+  </div>
+  <div class="achv-grid">
+    <div class="achv-card">
+      <ul>
+        <li>DPSI Senate Member — 3 years</li>
+        <li>Kartavya MUN — Secretariat, PR and Outreach</li>
+      </ul>
+    </div>
+    <div class="achv-card">
+      <ul>
+        <li>Recruited approximately 20 participants for Kartavya MUN through outreach</li>
+        <li>Assisted with outreach to and onboarding of schools and franchises in Delhi</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-head">
+    <span class="tag mono">02.</span>
+    <h2>Academic and Intellectual Competitions</h2>
+  </div>
+  <div class="achv-grid">
+    <div class="achv-card">
+      <ul>
+        <li>World Scholar's Cup — Qualified for the Global Round</li>
+        <li>World Scholar's Cup — Silver Medal in Writing</li>
+        <li>World Scholar's Cup — Silver Medal in Debate</li>
+      </ul>
+    </div>
+    <div class="achv-card">
+      <ul>
+        <li>French Olympiad — 1st Place at State Level (Grade 5)</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-head">
+    <span class="tag mono">03.</span>
+    <h2>Model United Nations</h2>
+  </div>
+  <div class="achv-grid">
+    <div class="achv-card">
+      <ul>
+        <li>Participated in 2 Model United Nations conferences</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-head">
+    <span class="tag mono">04.</span>
+    <h2>Basketball</h2>
+  </div>
+  <div class="achv-grid">
+    <div class="achv-card">
+      <ul>
+        <li>LIS Cup — 2nd Place</li>
+        <li>Participated in district-level basketball</li>
+      </ul>
+    </div>
+    <div class="achv-card">
+      <ul>
+        <li>Participated in interschool basketball competitions</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-head">
+    <span class="tag mono">05.</span>
+    <h2>Theatre and Cultural Activities</h2>
+  </div>
+  <div class="achv-grid">
+    <div class="achv-card">
+      <ul>
+        <li>Participated in theatre productions at DPSI</li>
+      </ul>
+    </div>
+    <div class="achv-card">
+      <ul>
+        <li>Contributed to planning and developing the Grade 10 annual production before it was cancelled</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-head">
+    <span class="tag mono">06.</span>
+    <h2>Public Speaking and Event Hosting</h2>
+  </div>
+  <div class="achv-grid">
+    <div class="achv-card">
+      <ul>
+        <li>Co-hosted and anchored several full-day school assemblies at Lancers International School</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-head">
+    <span class="tag mono">07.</span>
+    <h2>Music</h2>
+  </div>
+  <div class="achv-grid">
+    <div class="achv-card">
+      <ul>
+        <li>Studied Grade 1 Trinity Piano</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2026 Amaira Sajjan— built with HTML, CSS
+</footer>
+
+</body>
+</html>
