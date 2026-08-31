@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projects — Amaira Sajjan</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+
+  :root {
+    --bg: #0d1117;
+    --bg-panel: #12161f;
+    --bg-card: #161b26;
+    --border: #232a38;
+    --text: #e6e9ef;
+    --text-dim: #8891a3;
+    --accent: #7ee787;
+    --accent-2: #ffab70;
+    --keyword: #ff7b72;
+    --string: #a5d6ff;
+    --func: #d2a8ff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  .mono { font-family: 'JetBrains Mono', monospace; }
+
+  /* ---------- Nav ---------- */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 60px;
+    background: rgba(13,17,23,0.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .logo {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    font-size: 18px;
+    letter-spacing: -0.5px;
+  }
+  .logo span { color: var(--accent); }
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 36px;
+  }
+
+  nav a {
+    font-size: 15px;
+    color: var(--text-dim);
+    transition: color 0.2s;
+  }
+  nav a:hover { color: var(--accent); }
+  nav a.active { color: var(--accent); }
+
+  .nav-icons {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+  }
+  .nav-icons a {
+    color: var(--text-dim);
+    font-size: 18px;
+  }
+  .nav-icons a:hover { color: var(--accent); }
+
+  /* ---------- Page head ---------- */
+  .page-head {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 70px 40px 20px;
+  }
+  .page-head .eyebrow {
+    color: var(--accent);
+    font-size: 15px;
+    margin-bottom: 14px;
+    display: block;
+  }
+  .page-head h1 {
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+  .page-head p {
+    color: var(--text-dim);
+    font-size: 16px;
+    max-width: 620px;
+  }
+
+  /* ---------- Section shells ---------- */
+  section { max-width: 1100px; margin: 0 auto; padding: 50px 40px; }
+
+  /* ---------- Project cards ---------- */
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 26px;
+  }
+
+  .project-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s, border-color 0.2s;
+  }
+  .project-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent);
+  }
+
+  .project-thumb {
+    height: 130px;
+    background: linear-gradient(135deg, #1b2130, #232a38);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--text-dim);
+    font-size: 13px;
+  }
+
+  .project-body { padding: 22px 24px 26px; flex: 1; display: flex; flex-direction: column; }
+  .project-body .status {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11.5px;
+    color: var(--accent-2);
+    margin-bottom: 10px;
+    letter-spacing: 0.5px;
+  }
+  .project-body h3 { font-size: 19px; margin-bottom: 10px; }
+  .project-body p { color: var(--text-dim); font-size: 14px; flex: 1; margin-bottom: 18px; }
+
+  .project-links { display: flex; gap: 18px; font-size: 13.5px; }
+  .project-links a { color: var(--accent); }
+  .project-links a:hover { text-decoration: underline; }
+
+  footer {
+    text-align: center;
+    padding: 30px;
+    color: var(--text-dim);
+    font-size: 13px;
+    font-family: 'JetBrains Mono', monospace;
+    border-top: 1px solid var(--border);
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 900px) {
+    header { padding: 16px 24px; }
+    nav ul { display: none; }
+    .page-head { padding: 50px 24px 10px; }
+    section { padding: 40px 24px; }
+    .project-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 560px) {
+    .page-head h1 { font-size: 30px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">amaira sajjan</div>
+  <nav>
+    <ul>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="skills.html">Skills</a></li>
+      <li><a href="achievements.html">Achievements</a></li>
+      <li><a href="projects.html" class="active">Project</a></li>
+      <li><a href="index.html#projects">Blogs</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+  </nav>
+  <div class="nav-icons">
+    <a href="https://github.com/AmairaS" target="_blank" title="GitHub">GH</a>
+    <a href="https://www.linkedin.com/in/amaira-sajjan-1a151b314/" target="_blank" title="LinkedIn">in</a>
+  </div>
+</header>
+
+<div class="page-head">
+  <span class="eyebrow mono">// what I'm working on</span>
+  <h1>Projects</h1>
+  <p>Independent projects currently in progress — click into one to see the topic, timeline, and details.</p>
+</div>
+
+<section>
+  <div class="project-grid">
+
+    <div class="project-card">
+      <div class="project-thumb">Academic Enquiry Lab</div>
+      <div class="project-body">
+        <span class="status">RESEARCH · IN PROGRESS</span>
+        <h3>Academic Enquiry Lab</h3>
+        <p>An independent research essay exploring AI and Unemployment — how AI adoption is reshaping labour markets, and what policy responses might soften the transition.</p>
+        <div class="project-links">
+          <a href="academic-enquiry-lab.html">View Details &amp; Timeline →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div class="project-card">
+      <div class="project-thumb">Breakthrough Challenge</div>
+      <div class="project-body">
+        <span class="status">VIDEO · TOPIC SHORTLIST</span>
+        <h3>Breakthrough Challenge</h3>
+        <p>A two-minute science video for the Breakthrough Junior Challenge, exploring a candidate topic in advanced photonics and metamaterials.</p>
+        <div class="project-links">
+          <a href="breakthrough-challenge.html">View Details &amp; Timeline →</a>
+        </div>
+      </div>
+    </div> -->
+
+  </div>
+</section>
+
+<footer>
+  © 2026 Amaira Sajjan— built with HTML, CSS
+</footer>
+
+</body>
+</html>

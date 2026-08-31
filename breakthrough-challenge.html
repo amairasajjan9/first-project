@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Breakthrough Challenge — Amaira Sajjan</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+
+  :root {
+    --bg: #0d1117;
+    --bg-panel: #12161f;
+    --bg-card: #161b26;
+    --border: #232a38;
+    --text: #e6e9ef;
+    --text-dim: #8891a3;
+    --accent: #7ee787;
+    --accent-2: #ffab70;
+    --keyword: #ff7b72;
+    --string: #a5d6ff;
+    --func: #d2a8ff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  .mono { font-family: 'JetBrains Mono', monospace; }
+
+  /* ---------- Nav ---------- */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 60px;
+    background: rgba(13,17,23,0.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .logo {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    font-size: 18px;
+    letter-spacing: -0.5px;
+  }
+  .logo span { color: var(--accent); }
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+  }
+
+  nav a {
+    font-size: 15px;
+    color: var(--text-dim);
+    transition: color 0.2s;
+  }
+  nav a:hover { color: var(--accent); }
+  nav a.active { color: var(--accent); }
+
+  .nav-icons {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+  }
+  .nav-icons a {
+    color: var(--text-dim);
+    font-size: 18px;
+  }
+  .nav-icons a:hover { color: var(--accent); }
+
+  /* ---------- Page head ---------- */
+  .page-head {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 70px 40px 20px;
+  }
+  .page-head .eyebrow {
+    color: var(--accent);
+    font-size: 15px;
+    margin-bottom: 14px;
+    display: block;
+  }
+  .page-head h1 {
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+  .page-head p {
+    color: var(--text-dim);
+    font-size: 16px;
+    max-width: 640px;
+  }
+
+  /* ---------- Section shells ---------- */
+  section { max-width: 1100px; margin: 0 auto; padding: 50px 40px; }
+  .section-head { margin-bottom: 30px; }
+  .section-head .tag {
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--accent);
+    font-size: 14px;
+    display: block;
+    margin-bottom: 8px;
+  }
+  .section-head h2 { font-size: 26px; font-weight: 700; }
+
+  /* ---------- Topic cards ---------- */
+  .topic-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  .topic-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 24px 26px;
+    transition: transform 0.2s, border-color 0.2s;
+  }
+  .topic-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--accent);
+  }
+  .topic-card .num {
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--accent-2);
+    font-size: 12.5px;
+    display: block;
+    margin-bottom: 10px;
+    letter-spacing: 0.5px;
+  }
+  .topic-card h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  .topic-card p {
+    color: var(--text-dim);
+    font-size: 14.5px;
+  }
+
+  .status-note {
+    margin-top: 40px;
+    padding: 14px 18px;
+    border: 1px dashed var(--border);
+    border-radius: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: var(--text-dim);
+  }
+  .status-note span { color: var(--accent); }
+
+  /* ---------- Timeline ---------- */
+  .timeline {
+    position: relative;
+    padding-left: 34px;
+  }
+  .timeline::before {
+    content: "";
+    position: absolute;
+    left: 6px;
+    top: 6px;
+    bottom: 6px;
+    width: 1px;
+    background: var(--border);
+  }
+  .timeline-item {
+    position: relative;
+    padding-bottom: 28px;
+  }
+  .timeline-item:last-child { padding-bottom: 0; }
+  .timeline-dot {
+    position: absolute;
+    left: -34px;
+    top: 4px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 2px solid var(--accent);
+  }
+  .timeline-date {
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--accent);
+    font-size: 13px;
+    display: block;
+    margin-bottom: 6px;
+  }
+  .timeline-item h3 {
+    font-size: 17px;
+    margin-bottom: 6px;
+  }
+  .timeline-item p {
+    color: var(--text-dim);
+    font-size: 14.5px;
+    max-width: 640px;
+  }
+
+  footer {
+    text-align: center;
+    padding: 30px;
+    color: var(--text-dim);
+    font-size: 13px;
+    font-family: 'JetBrains Mono', monospace;
+    border-top: 1px solid var(--border);
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 900px) {
+    header { padding: 16px 24px; }
+    nav ul { display: none; }
+    .page-head { padding: 50px 24px 10px; }
+    section { padding: 40px 24px; }
+    .topic-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 560px) {
+    .page-head h1 { font-size: 30px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">amaira sajjan</div>
+  <nav>
+    <ul>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="skills.html">Skills</a></li>
+      <li><a href="achievements.html">Achievements</a></li>
+      <li><a href="projects.html" class="active">Project</a></li>
+      <li><a href="index.html#projects">Blogs</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+  </nav>
+  <div class="nav-icons">
+    <a href="https://github.com/AmairaS" target="_blank" title="GitHub">GH</a>
+    <a href="https://www.linkedin.com/in/amaira-sajjan-1a151b314/" target="_blank" title="LinkedIn">in</a>
+  </div>
+</header>
+
+<div class="page-head">
+  <span class="eyebrow mono">// pushing the edge of physics</span>
+  <h1>Breakthrough Challenge</h1>
+  <p>A shortlist of candidate research topics in advanced photonics and metamaterials being considered for this project — each explores how engineered structure, rather than raw material, can produce physically unusual behaviour.</p>
+</div>
+
+<section>
+  <div class="section-head">
+    <span class="tag mono">01.</span>
+    <h2>Candidate Topics</h2>
+  </div>
+  <div class="topic-grid">
+
+    <div class="topic-card">
+      <span class="num mono">01</span>
+      <h3>Negative Refraction &amp; Metamaterials</h3>
+      <p>Engineering materials that make light bend in unusual, seemingly "wrong" directions.</p>
+    </div>
+
+    <div class="topic-card">
+      <span class="num mono">02</span>
+      <h3>Photonic Time Crystals</h3>
+      <p>Materials whose properties change periodically in time, causing light to behave in strange ways.</p>
+    </div>
+
+    <div class="topic-card">
+      <span class="num mono">03</span>
+      <h3>Bound States in the Continuum</h3>
+      <p>Waves that somehow remain trapped even though they exist within a range of frequencies where they should be able to escape.</p>
+    </div>
+
+    <div class="topic-card">
+      <span class="num mono">04</span>
+      <h3>Thermal Cloaking</h3>
+      <p>Designing materials that redirect heat around an object, making the object difficult for surrounding temperature sensors to detect.</p>
+    </div>
+
+    <div class="topic-card">
+      <span class="num mono">05</span>
+      <h3>Topological Photonics</h3>
+      <p>Engineering structures that force light to travel along special, highly protected pathways.</p>
+    </div>
+
+    <div class="topic-card">
+      <span class="num mono">06</span>
+      <h3>Mechanical Metamaterials</h3>
+      <p>Materials whose unusual properties come from their engineered geometry rather than what they are made of.</p>
+    </div>
+
+  </div>
+
+  <div class="status-note mono">
+    <span>// status</span> — topic not yet finalized; shortlist only.
+  </div>
+</section>
+
+<section>
+  <div class="section-head">
+    <span class="tag mono">02.</span>
+    <h2>Timeline</h2>
+  </div>
+  <div class="timeline">
+    <div class="timeline-item">
+      <span class="timeline-dot"></span>
+      <span class="timeline-date mono">Until Aug 11</span>
+      <h3>Scope out the challenge</h3>
+      <p>Look through previous videos on the Breakthrough website for ideas — get a sense of what the field looks like, the competition, and the quality bar needed.</p>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-dot"></span>
+      <span class="timeline-date mono">By Aug 13</span>
+      <h3>Lock in topic and direction</h3>
+      <p>Sound off and iterate on candidate ideas with a subject matter expert, then lock in a general direction and topic.</p>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-dot"></span>
+      <span class="timeline-date mono">Aug 13 – 17</span>
+      <h3>Scripting</h3>
+      <p>Write the actual two-minute script that will be used for the video.</p>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-dot"></span>
+      <span class="timeline-date mono">Aug 17 – 20/22</span>
+      <h3>Video production</h3>
+      <p>Shoot the video parts that need editing — the sooner it's shot, the better.</p>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-dot"></span>
+      <span class="timeline-date mono">By Aug 20</span>
+      <h3>Final video</h3>
+      <p>Target completion date for the finished, edited video.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2026 Amaira Sajjan— built with HTML, CSS
+</footer>
+
+</body>
+</html>
