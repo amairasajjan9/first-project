@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Academic Enquiry Lab — Amaira Sajjan</title>
+<title>The AI Dividend — Amaira Sajjan</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
 
@@ -16,9 +16,6 @@
     --text-dim: #8891a3;
     --accent: #7ee787;
     --accent-2: #ffab70;
-    --keyword: #ff7b72;
-    --string: #a5d6ff;
-    --func: #d2a8ff;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -85,9 +82,9 @@
 
   /* ---------- Page head ---------- */
   .page-head {
-    max-width: 1100px;
+    max-width: 780px;
     margin: 0 auto;
-    padding: 70px 40px 20px;
+    padding: 26px 40px 20px;
   }
   .page-head .eyebrow {
     color: var(--accent);
@@ -95,175 +92,106 @@
     margin-bottom: 14px;
     display: block;
   }
-  .page-head h1 {
-    font-size: 40px;
-    font-weight: 700;
-    line-height: 1.2;
-    margin-bottom: 16px;
-  }
-  .page-head p {
-    color: var(--text-dim);
-    font-size: 16px;
-    max-width: 620px;
-  }
-
-  /* ---------- Section shells ---------- */
-  section { max-width: 1100px; margin: 0 auto; padding: 50px 40px; }
-  .section-head { margin-bottom: 30px; }
-  .section-head .tag {
+  .version-badge {
+    display: inline-block;
     font-family: 'JetBrains Mono', monospace;
-    color: var(--accent);
-    font-size: 14px;
-    display: block;
-    margin-bottom: 8px;
-  }
-  .section-head h2 { font-size: 26px; font-weight: 700; }
-
-  /* ---------- Page head extras ---------- */
-  .page-head .subtitle {
-    font-family: 'JetBrains Mono', monospace;
+    font-size: 12.5px;
     color: var(--accent-2);
-    font-size: 15px;
-    display: block;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 4px 12px;
     margin-bottom: 18px;
   }
 
-  /* ---------- How it works ---------- */
-  .how-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 18px;
+  /* ---------- Version switcher ---------- */
+  .version-switch {
+    max-width: 780px;
+    margin: 24px auto 0;
+    padding: 0 40px;
+    display: flex;
+    gap: 10px;
   }
-  .how-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 20px 22px;
-  }
-  .how-card .num {
-    font-family: 'JetBrains Mono', monospace;
-    color: var(--accent);
-    font-size: 12.5px;
-    display: block;
-    margin-bottom: 10px;
-  }
-  .how-card p { font-size: 14.5px; color: var(--text); }
-
-  .principle-box {
-    margin-top: 26px;
-    padding: 18px 22px;
-    border: 1px dashed var(--border);
-    border-radius: 8px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 13.5px;
-    color: var(--accent);
-    text-align: center;
-  }
-
-  /* ---------- Start panel ---------- */
-  .start-panel {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 30px 32px;
-  }
-  .continue-banner {
-    background: rgba(126,231,135,0.08);
-    border: 1px solid var(--accent);
-    border-radius: 8px;
-    padding: 16px 20px;
-    margin-bottom: 24px;
-    display: none;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-    flex-wrap: wrap;
-  }
-  .continue-banner.show { display: flex; }
-  .continue-banner p { color: var(--text); font-size: 14px; }
-  .field-row { display: flex; gap: 14px; margin-bottom: 18px; flex-wrap: wrap; }
-  .field-row input[type=text] {
-    flex: 1;
-    min-width: 260px;
-    background: var(--bg-panel);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 13px 14px;
-    color: var(--text);
-    font-size: 14.5px;
-  }
-  .field-row input[type=text]:focus { outline: none; border-color: var(--accent); }
-  .chip-row { display: flex; flex-wrap: wrap; gap: 10px; }
-  .chip {
+  .version-switch a {
     font-family: 'JetBrains Mono', monospace;
     font-size: 12.5px;
-    padding: 8px 14px;
+    padding: 6px 14px;
     border-radius: 20px;
-    background: var(--bg-panel);
     border: 1px solid var(--border);
     color: var(--text-dim);
   }
-  .chip:hover { border-color: var(--accent); color: var(--accent); }
-
-  .btn {
-    display: inline-block;
-    padding: 13px 26px;
-    border-radius: 6px;
-    font-size: 15px;
-    font-weight: 600;
-    font-family: 'JetBrains Mono', monospace;
-    border: 1px solid transparent;
-    cursor: pointer;
-  }
-  .btn-primary { background: var(--accent); color: #0d1117; }
-  .btn-primary:hover { opacity: 0.88; }
-  .btn-outline { border-color: var(--border); color: var(--text); background: transparent; }
-  .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
-
-  /* ---------- Timeline ---------- */
-  .timeline {
-    position: relative;
-    padding-left: 34px;
-  }
-  .timeline::before {
-    content: "";
-    position: absolute;
-    left: 6px;
-    top: 6px;
-    bottom: 6px;
-    width: 1px;
-    background: var(--border);
-  }
-  .timeline-item {
-    position: relative;
-    padding-bottom: 28px;
-  }
-  .timeline-item:last-child { padding-bottom: 0; }
-  .timeline-dot {
-    position: absolute;
-    left: -34px;
-    top: 4px;
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: var(--bg);
-    border: 2px solid var(--accent);
-  }
-  .timeline-date {
-    font-family: 'JetBrains Mono', monospace;
+  .version-switch a.active {
+    border-color: var(--accent);
     color: var(--accent);
-    font-size: 13px;
-    display: block;
-    margin-bottom: 6px;
   }
-  .timeline-item h3 {
-    font-size: 17px;
-    margin-bottom: 6px;
+  .version-switch a:hover { border-color: var(--accent); color: var(--accent); }
+  .page-head h1 {
+    font-size: 38px;
+    font-weight: 700;
+    line-height: 1.25;
+    margin-bottom: 12px;
   }
-  .timeline-item p {
+  .page-head .dek {
     color: var(--text-dim);
-    font-size: 14.5px;
+    font-size: 16px;
     max-width: 640px;
+  }
+
+  /* ---------- Essay ---------- */
+  .essay {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 30px 40px 60px;
+  }
+  .essay p {
+    font-size: 16.5px;
+    color: var(--text);
+    margin-bottom: 22px;
+  }
+  .essay p:first-of-type::first-letter {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 46px;
+    font-weight: 700;
+    color: var(--accent);
+    float: left;
+    line-height: 0.85;
+    padding-right: 8px;
+    padding-top: 6px;
+  }
+
+  /* ---------- References ---------- */
+  .refs-section {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 20px 40px 70px;
+    border-top: 1px solid var(--border);
+  }
+  .refs-section h2 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 15px;
+    color: var(--accent);
+    margin: 30px 0 20px;
+  }
+  .refs-section ol {
+    list-style: none;
+    counter-reset: refs;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .refs-section li {
+    counter-increment: refs;
+    font-size: 14px;
+    color: var(--text-dim);
+    padding-left: 28px;
+    position: relative;
+  }
+  .refs-section li::before {
+    content: "[" counter(refs) "]";
+    position: absolute;
+    left: 0;
+    color: var(--accent-2);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12.5px;
   }
 
   footer {
@@ -279,12 +207,13 @@
   @media (max-width: 900px) {
     header { padding: 16px 24px; }
     nav ul { display: none; }
-    .page-head { padding: 50px 24px 10px; }
-    section { padding: 40px 24px; }
-    .how-grid { grid-template-columns: 1fr; }
+    .version-switch { padding: 0 24px; }
+    .page-head { padding: 24px 24px 10px; }
+    .essay { padding: 30px 24px 50px; }
+    .refs-section { padding: 20px 24px 60px; }
   }
   @media (max-width: 560px) {
-    .page-head h1 { font-size: 30px; }
+    .page-head h1 { font-size: 28px; }
   }
 </style>
 </head>
@@ -308,120 +237,65 @@
   </div>
 </header>
 
-<div class="page-head">
-  <span class="eyebrow mono">// research &amp; enquiry</span>
-  <h1>Academic Enquiry Lab</h1>
-  <span class="subtitle">AI and Unemployment</span>
-  <p>Explore how artificial intelligence is changing employment, transforming jobs, creating new opportunities, and reshaping the future of work.</p>
+<div class="version-switch mono">
+  <a href="academic-enquiry-lab-v1.html">Version 1</a>
+  <a href="academic-enquiry-lab.html" class="active">Version 2</a>
 </div>
 
-<section>
-  <div class="section-head">
-    <span class="tag mono">01.</span>
-    <h2>How It Works</h2>
-  </div>
-  <div class="how-grid">
-    <div class="how-card"><span class="num mono">01</span><p>Ask research questions</p></div>
-    <div class="how-card"><span class="num mono">02</span><p>Explore evidence</p></div>
-    <div class="how-card"><span class="num mono">03</span><p>Compare different perspectives</p></div>
-    <div class="how-card"><span class="num mono">04</span><p>Use AI as a research assistant</p></div>
-    <div class="how-card"><span class="num mono">05</span><p>Build your own evidence-based conclusion</p></div>
-    <div class="how-card"><span class="num mono">06</span><p>Reflect on what you learned</p></div>
-  </div>
-  <div class="principle-box">"Don't ask AI for the answer. Use AI to learn how to find, evaluate, and build the answer yourself."</div>
-</section>
+<div class="page-head">
+  <span class="eyebrow mono">// LSESU Economics Society Essay Competition 2026</span>
+  <span class="version-badge mono">Version 2</span>
+  <h1>The AI Dividend: Who Owns the Future of Work?</h1>
+  <p class="dek">An essay on income, ownership and time as the three channels through which the gains from AI should be shared.</p>
+</div>
 
-<section>
-  <div class="section-head">
-    <span class="tag mono">02.</span>
-    <h2>Start Your Enquiry</h2>
-  </div>
-  <div class="continue-banner" id="continueBanner">
-    <p>You have an enquiry in progress.</p>
-    <a href="enquiry-app.html" class="btn btn-outline">Continue Enquiry →</a>
-  </div>
-  <div class="start-panel">
-    <div class="field-row">
-      <input type="text" id="startQuestion" placeholder="e.g. Will AI increase unemployment among software developers?">
-      <button class="btn btn-primary" id="startBtn" type="button">Start New Enquiry</button>
-    </div>
-    <div class="chip-row" id="exampleChips"></div>
-  </div>
-</section>
+<div class="essay">
+  <p>The greatest economic danger posed by artificial intelligence may not be that machines outthink us, but that they become productive enough to make our hours unnecessary. If AI performs tasks previously executed by workers, the economy may grow richer even as those workers grow poorer. The central problem is not technological progress itself, but the distribution of the surplus it creates. If AI substantially reduces labour demand, governments should not attempt to preserve every existing job. Instead, they should ensure its gains are distributed through three channels: income, ownership, and time. A Negative Income Tax can protect those whose labour income disappears; broader capital ownership can grant workers a claim on AI-generated wealth; and shorter working hours can convert productivity gains into structural leisure. The objective is not to stop machines from working, but to ensure humanity shares in what they make possible.</p>
 
-<section>
-  <div class="section-head">
-    <span class="tag mono">03.</span>
-    <h2>Timeline</h2>
-  </div>
-  <div class="timeline">
-    <div class="timeline-item">
-      <span class="timeline-dot"></span>
-      <span class="timeline-date mono">Aug 10</span>
-      <h3>Decide on topic and prompt</h3>
-      <p>Lock in the enquiry question and the prompt that will frame the essay.</p>
-    </div>
-    <div class="timeline-item">
-      <span class="timeline-dot"></span>
-      <span class="timeline-date mono">Aug 10 – 15</span>
-      <h3>Arrive at outline</h3>
-      <p>Build a skeleton of the content and where it goes — a visual layout of the essay before the writing exercise begins.</p>
-    </div>
-    <div class="timeline-item">
-      <span class="timeline-dot"></span>
-      <span class="timeline-date mono">Aug 15 – 21</span>
-      <h3>First full draft</h3>
-      <p>Write the first complete draft. At least 5 rounds of versions and suggestions, with review from a subject matter expert.</p>
-    </div>
-    <div class="timeline-item">
-      <span class="timeline-dot"></span>
-      <span class="timeline-date mono">Sept, week 1</span>
-      <h3>Submit-ready</h3>
-      <p>Final polish complete and the essay ready for submission.</p>
-    </div>
-  </div>
-</section>
+  <p>To understand why policy intervention is necessary, technology must not be viewed as universally enhancing worker productivity. Production consists of discrete tasks, and technology alters who performs them. Acemoglu and Restrepo's task-based framework distinguishes between a displacement effect, where capital replaces labour in existing tasks, and a reinstatement effect, where technological change creates new tasks in which humans hold a comparative advantage. Automation can therefore increase productivity while reducing labour demand and the labour share of income (Acemoglu and Restrepo, 2018; 2019).</p>
+
+  <p>The distributional consequences of AI depend on the relative pace of these effects. If new tasks emerge as rapidly as old ones disappear, technological progress raises employment and wages. However, if AI automates cognitive tasks faster than workers transition into newly created roles, productivity can surge while aggregate labour demand falls. The danger is not absolute joblessness, but an economy requiring fewer human hours to produce its desired output.</p>
+
+  <p>This creates an unusual distributional problem. The relevant divide may become not simply between high- and low-skilled workers but between those who own productive AI capital and those who sell labour to it. Greater productivity is traditionally treated as an unambiguous gain: output expands relative to inputs. But when the economised input is human labour, productivity growth alters not only the size of the economic pie, but who receives it. Suppose AI allows a firm to produce identical output with half as many workers. Productive capacity expands, but unless the surplus is redistributed, benefits accrue primarily to technology owners and workers whose labour complements AI. Displaced workers lose wages while capital owners capture an expanding share of returns.</p>
+
+  <p>The initial policy response must establish an income floor. A Negative Income Tax (NIT) provides targeted transfers that rise as market income falls, phasing out as earnings increase. Unlike universal payments, an NIT concentrates fiscal resources on households suffering low incomes. Universal Basic Income (UBI) is often proposed for its simplicity, but universality carries a heavy opportunity cost. The International Monetary Fund estimates that a UBI calibrated at 25 percent of median per-capita net market income would cost an average of 6.5 percent of GDP across advanced economies (IMF, 2017). When AI displacement remains heterogeneous across sectors and skills, equal transfers to all citizens are fiscally inefficient. An NIT is better suited to unequal displacement: as labour income drops, state support expands; as workers secure new employment, transfers recede.</p>
+
+  <p>However, an NIT contains an inherent design trade-off. If benefits are withdrawn too rapidly, earning additional market income yields diminishing net returns. The resulting effective marginal tax rate can weaken incentives to work or retrain. The solution is not to abandon redistribution, but to calibrate taper rates carefully. Historical evidence from North American income-maintenance experiments demonstrates that targeted transfers need not destroy work incentives when phase-out rates are properly designed (Riddell and Riddell, 2024).</p>
+
+  <p>Yet income redistribution alone leaves a deeper structural issue unaddressed. Imagine two societies where displaced workers receive identical state transfers. In the first, citizens hold equity in the capital generating AI profits. In the second, AI capital is concentrated among a narrow group of firms and investors. Their current consumption might look similar, but their long-term economic trajectories will diverge sharply. If AI increases returns to capital relative to labour, workers should not merely receive transfers funded by capital taxation; they should own direct claims on capital itself.</p>
+
+  <p>Tax-incentivised employee share schemes and mandatory profit-sharing allow workers to earn capital dividends alongside wages. The distinction between income transfers and capital ownership is fundamental: redistribution asks how much the state should take from winners, whereas broader ownership alters who owns productive assets in the first place. Governments could also establish Social Wealth Funds — publicly managed portfolios acquiring equity across productive industries and distributing returns via social dividends or public infrastructure.</p>
+
+  <p>The goal is not to abolish private enterprise, but to prevent an economy driven by machine capital from concentrating asset returns among a small elite. Implementation challenges are real: AI firms hold intangible assets that are difficult to value, multinational corporations can shift profits across jurisdictions, and strict local mandates could induce capital flight. However, these obstacles justify transparent accounting, statutory reporting, and international cooperation rather than inaction. The OECD's Pillar Two Global Anti-Base Erosion (GloBE) Model Rules demonstrate that coordinated international rules can reduce incentives for profit shifting by establishing a minimum level of taxation for large multinational enterprises (OECD, 2021).</p>
+
+  <p>Even with income security and asset democratisation, one vital dimension of inequality remains untouched: time. If AI allows society to produce identical output with fewer human hours, the dividend should not manifest exclusively as higher profits or consumption. Historically, productivity growth has enabled societies to reduce standard working hours alongside rising living standards. The AI era should continue that progression. A statutory reduction in the working week can convert technological displacement into a wider distribution of leisure. If an economy requires less aggregate labour, adjustment need not take the form of mass underemployment alongside full-time work. Required labour hours can instead be shared.</p>
+
+  <p>Time is a finite resource. Hours spent at work cannot simultaneously be dedicated to education, family care, community participation, or rest. As AI increases output per hour, the opportunity cost of maintaining rigid working weeks rises. The dividend of AI should be claimed as time, not just goods. Evidence from the UK's 2022 four-day-week pilot, in which 61 organisations reduced working hours by 20% without reducing pay, found that company revenue remained broadly stable while employee wellbeing improved; 56 organisations subsequently chose to continue the policy.</p>
+
+  <p>Crucially, working-hour reductions should not be imposed uniformly regardless of productivity. Sectoral capabilities vary: a nurse, an emergency responder, and a software engineer experience different automation dynamics. Forcing hours down in sectors lacking productivity growth would inflate labour costs without boosting efficiency. Working-time reductions must therefore be indexed to sector-specific multi-factor productivity gains.</p>
+
+  <p>These three policies function as mutually reinforcing pillars rather than substitutes. The Negative Income Tax guarantees an immediate floor for labour income to address poverty and volatility. Social Wealth Funds democratise asset ownership and capital returns to stem long-term asset concentration. The shorter work week converts efficiency gains into shared leisure to ensure temporal freedom. A worker facing sudden task displacement requires immediate income support. A worker who remains employed but owns no assets requires long-term capital participation. And a society that grows exponentially more productive without reducing working time may distribute money while failing to distribute temporal freedom.</p>
+
+  <p>The strongest objection is that AI may not cause permanent mass unemployment at all. Technological change automates existing tasks while creating new ones, a reinstatement mechanism recognised by Acemoglu and Restrepo (2019). Policy should not treat widespread joblessness as inevitable. Instead, governments should build an adaptive framework. If reinstatement remains robust and employment high, NIT expenditures will stay modest and working-hour reductions can proceed slowly. If displacement accelerates while new tasks fail to materialise, the framework can scale income support, broaden capital distributions, and reduce working hours. The state should not attempt to forecast the precise future of work. It should build an institutional hedge against severe distributional shocks.</p>
+
+  <p>Defining the success of AI by the number of traditional jobs it preserves is a conceptual error. Employment is a means to an end: income, production, purpose, and human welfare. If technology enables society to produce more with less labour, insisting on long working hours simply because work is measured in hours confuses the means with the objective. The central economic question is not how society saves jobs from AI, but how humans secure the dividend from needing fewer jobs. If AI allows humanity to produce more while working less, that outcome should represent a great productivity achievement. But that promise holds true only if the dividend is shared. The mandate of economic policy is to prevent the automation paradox — ensuring that the wealth machines create, the capital they generate, and the time they liberate belong to society as a whole.</p>
+</div>
+
+<div class="refs-section">
+  <h2 class="mono">References</h2>
+  <ol>
+    <li>Acemoglu, D. and Restrepo, P. (2018) 'The Race between Man and Machine: Implications of Technology for Growth, Factor Shares, and Employment', <em>American Economic Review</em>, 108(6), pp. 1488–1542.</li>
+    <li>Acemoglu, D. and Restrepo, P. (2019) 'Automation and New Tasks: How Technology Displaces and Reinstates Labor', <em>Journal of Economic Perspectives</em>, 33(2), pp. 3–30.</li>
+    <li>International Monetary Fund (2017) <em>Fiscal Monitor: Tackling Inequality</em>. Washington, DC: International Monetary Fund.</li>
+    <li>Lewsey, F. (2023) 'Would you prefer a four-day working week?', University of Cambridge, 21 February.</li>
+    <li>OECD (2021) <em>Tax Challenges Arising from Digitalisation of the Economy – Global Anti-Base Erosion Model Rules (Pillar Two): Inclusive Framework on BEPS</em>. Paris: OECD Publishing.</li>
+    <li>Riddell, C. and Riddell, W. C. (2024) 'Welfare versus Work under a Negative Income Tax: Evidence from the Gary, Seattle, Denver, and Manitoba Income Maintenance Experiments', <em>Journal of Labor Economics</em>, 42(2), pp. 427–467.</li>
+  </ol>
+</div>
 
 <footer>
-  © 2026 Amaira Sajjan— built with HTML, CSS
+  © 2026 Amaira Sajjan — built with HTML, CSS
 </footer>
-
-<script>
-  const EXAMPLE_QUESTIONS = [
-    'Will AI replace human jobs?',
-    'Which jobs are most vulnerable to AI?',
-    'Will AI create more jobs than it destroys?',
-    'How will AI affect young workers?',
-    'What skills will become important in the AI economy?'
-  ];
-  const chipRow = document.getElementById('exampleChips');
-  EXAMPLE_QUESTIONS.forEach(q => {
-    const chip = document.createElement('button');
-    chip.type = 'button';
-    chip.className = 'chip';
-    chip.textContent = q;
-    chip.addEventListener('click', () => { document.getElementById('startQuestion').value = q; });
-    chipRow.appendChild(chip);
-  });
-
-  try {
-    const existing = JSON.parse(localStorage.getItem('ael_enquiry_v1') || 'null');
-    const hasProgress = existing && (existing.question?.original || existing.savedEvidence?.length || existing.conclusion?.reasoning);
-    if (hasProgress) document.getElementById('continueBanner').classList.add('show');
-  } catch (e) {}
-
-  document.getElementById('startBtn').addEventListener('click', () => {
-    const val = document.getElementById('startQuestion').value.trim();
-    try {
-      const existing = JSON.parse(localStorage.getItem('ael_enquiry_v1') || 'null');
-      const hasProgress = existing && (existing.question?.original || existing.savedEvidence?.length || existing.conclusion?.reasoning);
-      if (hasProgress && !confirm('This will clear your current enquiry progress and start fresh. Continue?')) return;
-      localStorage.removeItem('ael_enquiry_v1');
-      if (val) localStorage.setItem('ael_pending_question', val);
-    } catch (e) {}
-    window.location.href = 'enquiry-app.html';
-  });
-</script>
 
 </body>
 </html>

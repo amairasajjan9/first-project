@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI and Unemployment (Outline) — Amaira Sajjan</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+
+  :root {
+    --bg: #0d1117;
+    --bg-panel: #12161f;
+    --bg-card: #161b26;
+    --border: #232a38;
+    --text: #e6e9ef;
+    --text-dim: #8891a3;
+    --accent: #7ee787;
+    --accent-2: #ffab70;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  .mono { font-family: 'JetBrains Mono', monospace; }
+
+  /* ---------- Nav ---------- */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 60px;
+    background: rgba(13,17,23,0.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .logo {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    font-size: 18px;
+    letter-spacing: -0.5px;
+  }
+  .logo span { color: var(--accent); }
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+  }
+
+  nav a {
+    font-size: 15px;
+    color: var(--text-dim);
+    transition: color 0.2s;
+  }
+  nav a:hover { color: var(--accent); }
+  nav a.active { color: var(--accent); }
+
+  .nav-icons {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+  }
+  .nav-icons a {
+    color: var(--text-dim);
+    font-size: 18px;
+  }
+  .nav-icons a:hover { color: var(--accent); }
+
+  /* ---------- Version switcher ---------- */
+  .version-switch {
+    max-width: 900px;
+    margin: 24px auto 0;
+    padding: 0 40px;
+    display: flex;
+    gap: 10px;
+  }
+  .version-switch a {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12.5px;
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+  }
+  .version-switch a.active {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+  .version-switch a:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* ---------- Page head ---------- */
+  .page-head {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 26px 40px 20px;
+  }
+  .page-head .eyebrow {
+    color: var(--accent);
+    font-size: 15px;
+    margin-bottom: 14px;
+    display: block;
+  }
+  .page-head h1 {
+    font-size: 38px;
+    font-weight: 700;
+    line-height: 1.25;
+    margin-bottom: 20px;
+  }
+
+  .question-box {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 8px;
+    padding: 22px 26px;
+    font-size: 16px;
+    color: var(--text);
+    font-style: italic;
+    margin-bottom: 22px;
+  }
+  .question-box .label {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-style: normal;
+    font-size: 12.5px;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+
+  .thesis-box {
+    font-size: 15.5px;
+    color: var(--text-dim);
+    max-width: 720px;
+  }
+  .thesis-box .label {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12.5px;
+    color: var(--accent-2);
+    margin-bottom: 8px;
+  }
+
+  /* ---------- Section shells ---------- */
+  section { max-width: 900px; margin: 0 auto; padding: 40px 40px; }
+  .section-head { margin-bottom: 24px; }
+  .section-head .tag {
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--accent);
+    font-size: 14px;
+    display: block;
+    margin-bottom: 8px;
+  }
+  .section-head h2 { font-size: 24px; font-weight: 700; }
+
+  /* ---------- Outline ---------- */
+  .outline-item {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 22px 26px;
+    margin-bottom: 14px;
+  }
+  .outline-item h3 {
+    font-size: 17px;
+    margin-bottom: 12px;
+    color: var(--text);
+  }
+  .outline-item ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .outline-item ul ul {
+    margin-top: 8px;
+    margin-left: 18px;
+  }
+  .outline-item li {
+    font-size: 14.5px;
+    color: var(--text-dim);
+    position: relative;
+    padding-left: 18px;
+  }
+  .outline-item li::before {
+    content: "—";
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+  }
+
+  /* ---------- Changes list ---------- */
+  .change-item {
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .change-item:last-child { border-bottom: none; }
+  .change-item h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: var(--accent-2);
+  }
+  .change-item ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .change-item li {
+    font-size: 14.5px;
+    color: var(--text-dim);
+    position: relative;
+    padding-left: 18px;
+  }
+  .change-item li::before {
+    content: "—";
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+  }
+
+  /* ---------- Draft ---------- */
+  .draft-panel {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 30px 32px;
+  }
+  .draft-panel p {
+    font-size: 15px;
+    color: var(--text);
+    margin-bottom: 18px;
+  }
+  .draft-panel p:last-child { margin-bottom: 0; }
+
+  footer {
+    text-align: center;
+    padding: 30px;
+    color: var(--text-dim);
+    font-size: 13px;
+    font-family: 'JetBrains Mono', monospace;
+    border-top: 1px solid var(--border);
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 900px) {
+    header { padding: 16px 24px; }
+    nav ul { display: none; }
+    .version-switch { padding: 0 24px; }
+    .page-head { padding: 24px 24px 10px; }
+    section { padding: 30px 24px; }
+  }
+  @media (max-width: 560px) {
+    .page-head h1 { font-size: 28px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">amaira sajjan</div>
+  <nav>
+    <ul>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="skills.html">Skills</a></li>
+      <li><a href="achievements.html">Achievements</a></li>
+      <li><a href="projects.html" class="active">Project</a></li>
+      <li><a href="index.html#projects">Blogs</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+  </nav>
+  <div class="nav-icons">
+    <a href="https://github.com/AmairaS" target="_blank" title="GitHub">GH</a>
+    <a href="https://www.linkedin.com/in/amaira-sajjan-1a151b314/" target="_blank" title="LinkedIn">in</a>
+  </div>
+</header>
+
+<div class="version-switch mono">
+  <a href="academic-enquiry-lab-v1.html" class="active">Version 1</a>
+  <a href="academic-enquiry-lab.html">Version 2</a>
+</div>
+
+<div class="page-head">
+  <span class="eyebrow mono">// LSESU Economics Society Essay Competition 2026</span>
+  <h1>AI, Unemployment &amp; the Distribution of Gains</h1>
+
+  <div class="question-box">
+    <span class="label mono">Essay Question</span>
+    "Suppose AI reduces the number of people needed to perform a large fraction of jobs, threatening to cause high unemployment. What measures should be put in place to limit inequality in pay (and, ideally, also in hours worked)?"
+  </div>
+
+  <div class="thesis-box">
+    <span class="label mono">Central Argument</span>
+    AI may increase overall productivity and wealth while distributing its benefits unevenly. Therefore, policy should focus on distributing the gains from AI through income, wealth ownership and working time.
+  </div>
+</div>
+
+<section>
+  <div class="section-head">
+    <span class="tag mono">01.</span>
+    <h2>Essay Outline</h2>
+  </div>
+
+  <div class="outline-item">
+    <h3>1. Introduction</h3>
+    <ul>
+      <li>Introduce AI as a technology originally intended to improve human productivity, accuracy and efficiency.</li>
+      <li>Explain how AI is increasingly capable of performing tasks previously carried out by humans.</li>
+      <li>Introduce the potential problem: AI can increase economic output while reducing demand for certain types of labour.</li>
+      <li>Establish that AI will not affect all workers equally.</li>
+      <li>Thesis: Governments should use a combination of income redistribution, broader ownership of AI-generated wealth and reductions in working hours to ensure that productivity gains are widely shared.</li>
+    </ul>
+  </div>
+
+  <div class="outline-item">
+    <h3>2. Why AI Will Affect Workers Differently</h3>
+    <ul>
+      <li>Explain differences in human capital between workers.</li>
+      <li>Discuss education, training, experience and qualifications.</li>
+      <li>Distinguish between jobs requiring specialised skills and jobs involving routine or predictable tasks.</li>
+      <li>Introduce the concepts of AI as a complement and AI as a substitute.</li>
+      <li>Explain that AI may increase the productivity of some workers while reducing demand for others.</li>
+      <li>Link this difference to potential inequality in wages and employment.</li>
+    </ul>
+  </div>
+
+  <div class="outline-item">
+    <h3>3. AI and Labour-Market Inequality</h3>
+    <ul>
+      <li>AI complements certain high-skilled workers → productivity may increase → wages may increase.</li>
+      <li>AI substitutes for routine or easily automated tasks → demand for some workers may decrease.</li>
+      <li>Workers with fewer transferable skills may face greater difficulty adapting.</li>
+      <li>AI could increase the relative importance of capital.</li>
+      <li>Owners of AI-related capital may capture a large share of productivity gains.</li>
+      <li>Therefore, AI could increase income and wealth inequality even while total economic output increases.</li>
+    </ul>
+  </div>
+
+  <div class="outline-item">
+    <h3>4. Policy 1: Redistributing Income</h3>
+    <ul>
+      <li>Explain why some redistribution may be necessary if AI causes significant labour displacement.
+        <ul>
+          <li>Progressive taxation: tax higher incomes and profits; use revenue to support workers affected by AI.</li>
+          <li>Negative income tax / targeted transfers: provide greater support to lower-income households; potentially more targeted than universal payments.</li>
+          <li>Universal Basic Income: provides everyone with a minimum income; could protect workers from technological unemployment; consider the high fiscal cost and potential labour-market effects.</li>
+        </ul>
+      </li>
+      <li>Evaluate which approach is most effective rather than simply presenting policies.</li>
+    </ul>
+  </div>
+
+  <div class="outline-item">
+    <h3>5. Policy 2: Redistributing Wealth and Ownership</h3>
+    <ul>
+      <li>Explain that income redistribution alone may not address the underlying shift from labour income towards capital income.</li>
+      <li>Employee ownership: allow workers to receive part of the profits generated by firms using AI.</li>
+      <li>Profit-sharing: workers directly benefit from productivity improvements.</li>
+      <li>Public/social wealth funds: allow society as a whole to own a share of productive assets.</li>
+      <li>Main argument: if AI increases the returns to capital, workers should not only receive transfers from capital owners; they could also gain a direct stake in the capital generating those returns.</li>
+    </ul>
+  </div>
+
+  <div class="outline-item">
+    <h3>6. Policy 3: Redistributing Working Hours</h3>
+    <ul>
+      <li>Connect directly to the second part of the question: inequality in hours worked.</li>
+      <li>If AI increases productivity, fewer human hours may be required to produce the same level of output.</li>
+      <li>Shorter working weeks: convert productivity gains into additional leisure.</li>
+      <li>Job sharing: distribute available work among more workers.</li>
+      <li>Flexible working arrangements.</li>
+      <li>Explain that leisure can be considered an important component of living standards, not just income.</li>
+      <li>Consider limitations: not every industry can reduce hours equally; some workers may prefer higher income instead of more leisure; reduced hours may not be sustainable without sufficient productivity gains.</li>
+    </ul>
+  </div>
+
+  <div class="outline-item">
+    <h3>7. Counterargument: Will AI Really Cause Mass Unemployment?</h3>
+    <ul>
+      <li>Technological change has historically destroyed some jobs while creating others.</li>
+      <li>AI may create new occupations and increase demand for complementary skills.</li>
+      <li>The extent of future unemployment is therefore uncertain.</li>
+      <li>Governments should avoid assuming that AI will automatically produce permanent mass unemployment.</li>
+      <li>Policy should be adaptable depending on actual labour-market outcomes.</li>
+      <li>However, uncertainty does not eliminate the need for policies that protect workers from potentially large distributional shocks.</li>
+    </ul>
+  </div>
+
+  <div class="outline-item">
+    <h3>8. Overall Policy Recommendation</h3>
+    <ul>
+      <li>Combine the three approaches rather than relying on one policy.</li>
+      <li>Short term: income support and retraining for displaced workers.</li>
+      <li>Medium term: broader participation in AI-generated wealth through ownership and profit-sharing.</li>
+      <li>Long term: convert productivity gains into shorter working hours where economically feasible.</li>
+      <li>Emphasise that the objective should not simply be to preserve every existing job.</li>
+      <li>The objective should be to ensure that the gains from AI are broadly shared.</li>
+    </ul>
+  </div>
+
+  <div class="outline-item">
+    <h3>9. Conclusion</h3>
+    <ul>
+      <li>Return to the central problem: AI could make society significantly richer while making the distribution of income and employment more unequal.</li>
+      <li>AI itself is not necessarily the problem; the distribution of its gains is.</li>
+      <li>Effective policy should distribute the benefits of AI through income, wealth and time.</li>
+      <li>Final argument: if AI allows society to produce more with less human labour, technological progress should ultimately give people not only greater economic security, but also greater freedom and leisure.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="section-head">
+    <span class="tag mono">02.</span>
+    <h2>Additional Changes to Implement When Drafting</h2>
+  </div>
+
+  <div class="change-item">
+    <h3>1. Pick a clear winner for Policy 1</h3>
+    <ul>
+      <li>Do not treat UBI, NIT and progressive taxation as three equally weighted alternatives.</li>
+      <li>The essay should ultimately favour Negative Income Tax (NIT) as the strongest income-redistribution mechanism.</li>
+      <li>Main reasoning: more targeted than UBI; lower fiscal burden than a generous universal payment; can protect workers whose incomes fall because of AI; its phase-out/taper rate can preserve incentives to continue working.</li>
+      <li>Acknowledge the limitation that a poorly designed taper can create a high effective marginal tax rate.</li>
+      <li>Progressive taxation can be presented primarily as a way of financing redistribution, rather than the main standalone solution.</li>
+      <li>UBI should still be evaluated, but ultimately rejected as the preferred option because of its fiscal cost and potential labour-supply effects.</li>
+      <li>The final policy section should therefore have a clear verdict: NIT is preferred.</li>
+    </ul>
+  </div>
+
+  <div class="change-item">
+    <h3>2. Use at least one named economic model/concept</h3>
+    <ul>
+      <li>Introduce Acemoglu–Restrepo's task-based model of technological change.</li>
+      <li>Use the distinction between displacement effects (AI takes over tasks previously performed by workers) and reinstatement effects (technological change creates new tasks in which workers can be employed).</li>
+      <li>Apply the model rather than simply mentioning it.</li>
+      <li>Use it to explain why the impact of AI depends on whether the creation of new tasks is sufficient to offset the tasks AI displaces.</li>
+      <li>This should strengthen Sections 2, 3 and 7 and give the essay a stronger theoretical foundation.</li>
+      <li>Alternatively, skill-biased technological change can be mentioned where relevant, but the Acemoglu–Restrepo framework should do the main analytical work.</li>
+    </ul>
+  </div>
+
+  <div class="change-item">
+    <h3>3. Strengthen the wealth/ownership section with implementation details</h3>
+    <ul>
+      <li>The employee ownership, profit-sharing and public wealth fund argument should remain one of the essay's most original ideas.</li>
+      <li>However, directly acknowledge the main practical objections.</li>
+      <li>Consider: valuation of privately held or rapidly changing AI assets; enforcement of required profit/ownership distribution; how policies apply to multinational firms; capital flight to weaker jurisdictions; profit shifting across borders.</li>
+      <li>Pre-empt these criticisms rather than leaving them for the examiner to raise.</li>
+      <li>Possible solutions to discuss: audited financial reporting; transparent valuation rules; international coordination; taxation based partly on economic activity rather than only corporate headquarters.</li>
+      <li>Make clear that the goal is not to eliminate private ownership, but to ensure that workers and society obtain a meaningful stake in the capital generating AI-related returns.</li>
+    </ul>
+  </div>
+
+  <div class="change-item">
+    <h3>4. Make the three policies work together</h3>
+    <ul>
+      <li>Avoid writing Sections 4, 5 and 6 as three completely separate policies.</li>
+      <li>Show how each solves a different dimension of inequality: NIT → income security; ownership/profit-sharing → wealth and capital-income inequality; shorter working hours → inequality in access to leisure.</li>
+      <li>This creates a stronger overall argument because the policies address income, wealth and time rather than attempting to solve everything through taxation.</li>
+    </ul>
+  </div>
+
+  <div class="change-item">
+    <h3>5. Drafting order</h3>
+    <ul>
+      <li>Do not draft the essay strictly from the introduction onwards.</li>
+      <li>Start with Section 4: Income Redistribution.</li>
+      <li>Establish the NIT as the preferred policy and build the evaluation around it.</li>
+      <li>Use the analytical standard established in Section 4 when writing Sections 5 and 6.</li>
+      <li>Then write the counterargument and overall recommendation.</li>
+      <li>Write the introduction and conclusion last, once the exact argument and verdict are established.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="section-head">
+    <span class="tag mono">03.</span>
+    <h2>Section 4 Draft</h2>
+  </div>
+  <div class="draft-panel">
+    <p>If AI displaces a substantial share of labour, the resulting inequality would not simply be a difference in wages; it could represent a redistribution of the economy's productive surplus from labour towards the owners of capital. Government intervention would therefore be justified not to prevent technological progress, but to ensure that its gains do not accrue disproportionately to those who remain employed or own the technologies. The central policy challenge is consequently one of redistribution without destroying the incentive to participate in the labour market.</p>
+    <p>A Negative Income Tax (NIT) is particularly suited to this problem. By guaranteeing a minimum income and gradually withdrawing the transfer as earnings rise, it directs the greatest fiscal support towards those whose labour incomes have been most severely reduced by AI. This is preferable to treating redistribution as a universal entitlement: the policy should respond to the unequal incidence of technological displacement. Moreover, evidence from North American income-maintenance experiments challenges the assumption that receiving transfers necessarily makes people less willing to work. Riddell and Riddell find positive labour-supply responses among welfare recipients in the Denver and Manitoba experiments.</p>
+    <p>However, NIT is not intrinsically incentive-compatible. Its effectiveness depends on the taper rate: if benefits are withdrawn too rapidly as earnings increase, the resulting high marginal effective tax rate can substantially reduce the financial return to working additional hours. The optimal NIT must therefore provide a sufficiently strong income floor while ensuring that each additional unit of labour income leaves the worker better off.</p>
+    <p>A Universal Basic Income (UBI) avoids this targeting problem and is attractive if AI eventually produces economy-wide displacement. Yet universality is fiscally costly: the IMF estimates that a UBI equal to 25% of median per-capita net market income would cost around 6.5% of GDP in its sample of advanced economies. Where displacement remains uneven, directing scarce fiscal resources towards those actually losing labour income is therefore more defensible.</p>
+    <p>Thus, NIT should be preferred to UBI, with progressive taxation providing part of its financing. Its purpose is not to make work unnecessary, but to ensure that losing a job to a machine does not mean losing economic security altogether.</p>
+  </div>
+</section>
+
+<footer>
+  © 2026 Amaira Sajjan — built with HTML, CSS
+</footer>
+
+</body>
+</html>
